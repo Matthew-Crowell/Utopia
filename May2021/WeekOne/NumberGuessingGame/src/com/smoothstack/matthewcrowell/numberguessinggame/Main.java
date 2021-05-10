@@ -10,7 +10,7 @@ public class Main {
         Integer number = (int) ((Math.random() * 100) + 1);
         Integer attempts = 5;
         Integer guess = Integer.valueOf(args[0]);
-        System.out.println(number);
+
         Boolean isWinner = false;
         while(attempts > 0 && isWinner == false)
         {
