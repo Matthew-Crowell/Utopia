@@ -11,10 +11,13 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("1)");
         PrintPattern1(4);
+        System.out.println();
         System.out.println("2)");
         PrintPattern2(4);
+        System.out.println();
         System.out.println("3)");
         PrintPattern3(4);
+        System.out.println();
         System.out.println("4)");
         PrintPattern4(4);
     }
