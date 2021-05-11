@@ -22,36 +22,42 @@ public class Main {
         PrintPattern4(4);
     }
 
+    // prints a triangle
     public static void PrintPattern1(int iterations){
         // variables for base and pattern
-        String base = ".";
-        String pattern = "*";
+        StringBuilder base = new StringBuilder();
+        base.append(".");
+        StringBuilder pattern = new StringBuilder();
+        pattern.append("*");
 
         // print by row
         for(int i = 0; i < iterations; i++)
         {
             // generate base line
-            base += "..";
+            base.append("..");
 
             // print complete row
             System.out.println(pattern);
 
             // increment number of pattern characters printed by one
-            pattern += "*";
+            pattern.append("*");
         }
 
         // print base line
-        System.out.println(base);
+        System.out.println(base.toString());
     }
 
+    // prints an inverted triangle
     public static void PrintPattern2(int iterations) {
         // variables for base and pattern
-        String base = "..";
-        String pattern = "*";
+        StringBuilder base = new StringBuilder();
+        base.append("..");
+        StringBuilder pattern = new StringBuilder();
+        pattern.append("*");
 
         // generate base line
         for(int i = 0; i < iterations; i++){
-            base += "..";
+            base.append("..");
         }
 
         // print base line
@@ -69,10 +75,13 @@ public class Main {
         }
     }
 
+    // prints a pyramid
     public static void PrintPattern3(int iterations){
         // variables for base and pattern
-        String base = "...";
-        String pattern = "*";
+        StringBuilder base = new StringBuilder();
+        base.append("...");
+        StringBuilder pattern = new StringBuilder();
+        pattern.append("*");
 
         // print by row
         for(int i = iterations; i > 0; i--){
@@ -86,27 +95,30 @@ public class Main {
             System.out.println(pattern);
 
             // increment number of pattern characters printed by two
-            pattern += "**";
+            pattern.append("**");
 
             // generate base line
-            base += "..";
+            base.append("..");
         }
 
         // print base line
         System.out.println(base);
     }
 
+    // prints an inverted pyramid
     public static void PrintPattern4(int iterations) {
         // variables for base and pattern
-        String base = "....";
-        String pattern = "*";
+        StringBuilder base = new StringBuilder();
+        base.append("....");
+        StringBuilder pattern = new StringBuilder();
+        pattern.append("*");
 
         // counter for number of stars
         int patternCounter = 2 * iterations - 1;
 
         // generate the base line
         for(int i = 0; i < iterations; i++){
-            base += "..";
+            base.append("..");
         }
 
         // print the base line
