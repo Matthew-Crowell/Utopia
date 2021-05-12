@@ -3,6 +3,7 @@ package com.smoothstack.matthewcrowell.countspecificcharacter;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -28,7 +29,7 @@ public class CountSpecificCharacter {
 	 * @param triggerCharacter Character to count occurences of.
 	 */
 	CountSpecificCharacter(Character triggerCharacter) {
-		this.triggerCharacter = triggerCharacter;
+		this.triggerCharacter = triggerCharacter.toString().toUpperCase(Locale.ROOT).toCharArray()[0];
 		this.characterCount = 0;
 	}
 
@@ -60,7 +61,7 @@ public class CountSpecificCharacter {
 		Scanner scanner = new Scanner(new BufferedReader(new FileReader(args[0])));
 		while (scanner.hasNext()) {
 			line.append(scanner.next());
-			char[] letters = line.toString().toCharArray();
+			char[] letters = line.toString().toUpperCase(Locale.ROOT).toCharArray();
 			for (char letter : letters) {
 				if (letter == triggerCharacter) {
 					characterCount++;
