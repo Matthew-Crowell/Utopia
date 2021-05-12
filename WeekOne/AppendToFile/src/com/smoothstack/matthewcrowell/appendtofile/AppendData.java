@@ -14,12 +14,12 @@ import java.nio.file.StandardOpenOption;
 import java.io.IOException;
 
 /**
- * Application to append text to an existing file
+ * Class to append text to an existing file
  * called outFile.txt.
  *
  * @author matthew.crowell
  */
-public class Main {
+public class AppendData {
 
 	/**
 	 * Handles command line arguments and coordinates appending data to file.
@@ -27,9 +27,10 @@ public class Main {
 	 * @param args String[] of command line arguments to be appended to file
 	 */
 	public static void main(String[] args) {
-		Main application = new Main();
+		AppendData application = new AppendData();
 		String data = null;
-		switch(args[0])
+
+		switch(args.length > 0 ? args[0] : "--help")
 		{
 			case("--help"):
 			case("-h"):
