@@ -22,7 +22,7 @@ import java.io.IOException;
 public class Main {
 
 	/**
-	 * Appends data to a file, outFile.txt; creates file if it does not exist.
+	 * Handles command line arguments and coordinates appending data to file.
 	 *
 	 * @param args String[] of command line arguments to be appended to file
 	 */
@@ -49,7 +49,7 @@ public class Main {
 	}
 
 	/**
-	 * Copies data from command line to file via buffered writer.
+	 * Appends data to file via buffered writer.
 	 *
 	 * @param args String to append to file
 	 */
@@ -63,7 +63,7 @@ public class Main {
 	}
 
 	/**
-	 * Copies data from command line to file with NIO
+	 * Appends data to file with NIO
 	 *
 	 * @param data String of data to append
 	 */
