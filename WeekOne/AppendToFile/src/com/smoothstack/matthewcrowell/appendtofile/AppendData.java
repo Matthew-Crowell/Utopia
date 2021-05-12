@@ -116,7 +116,7 @@ public class AppendData {
 	 */
 	private void printHelp(){
 		System.out.println("Application to write data to a file from the command line or another file.\n" +
-				"Usage:\n\tjava com.smoothstack.matthewcrowell.appendtofile.Main <text>\n" +
-				"\tjava com.smoothstack.matthewcrowell.appendtofile.Main <--file | -f> <path/to/file>\n");
+				"Usage:\n\tjava com.smoothstack.matthewcrowell.appendtofile.AppendData <text>\n" +
+				"\tjava com.smoothstack.matthewcrowell.appendtofile.AppendData <--file | -f> <path/to/file>\n");
 	}
 }
