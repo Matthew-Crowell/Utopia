@@ -20,7 +20,7 @@ public class DirectoryContents {
 	public static void main(String[] args) {
 		DirectoryContents app = new DirectoryContents();
 
-		switch(args.length > 0 ? args[0] : "--help"){
+		switch(args.length > 0 ? args[0] : ""){
 			case("--help"):
 			case("-h"):
 				app.printHelp();
@@ -30,7 +30,7 @@ public class DirectoryContents {
 				app.listAll(args[1]);
 				break;
 			default:
-				app.printHelp();
+				app.listAll("");
 				break;
 		}
 
