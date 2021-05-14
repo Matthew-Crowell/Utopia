@@ -28,7 +28,7 @@ public class AppendData {
 	 */
 	public static void main(String[] args) {
 		AppendData application = new AppendData();
-		String data = null;
+		StringBuilder data = new StringBuilder();
 
 		switch(args.length > 0 ? args[0] : "--help")
 		{
@@ -38,13 +38,12 @@ public class AppendData {
 				break;
 			case("--file"):
 			case("-f"):
-				data = application.readFileWithNIO(args[1]);
-				application.appendToFileWithNIO(data);
+				data.append(application.readFileWithNIO(args[1]));
+				application.appendToFileWithNIO(data.toString());
 				break;
 			default:
-				data = application.convertArgsToStringBuilder(args).toString();
-				//application.appendToFile(data.toString());
-				application.appendToFileWithNIO(data);
+				data.append(application.convertArgsToStringBuilder(args));
+				application.appendToFile(data.toString());
 				break;
 		}
 	}
@@ -52,7 +51,7 @@ public class AppendData {
 	/**
 	 * Appends data to file via buffered writer.
 	 *
-	 * @param args String to append to file
+	 * @param data String to append to file
 	 */
 	private void appendToFile(String data) {
 		try (BufferedWriter outFile = new BufferedWriter(new FileWriter("outFile.txt", true))) {
