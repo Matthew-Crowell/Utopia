@@ -3,7 +3,7 @@ package com.smoothstack.matthewcrowell.deadlock;
 /**
  * Class to demonstrate deadlock condition.
  *
- * @authoer matthew.crowell
+ * @author matthew.crowell
  */
 public class Deadlock {
 
