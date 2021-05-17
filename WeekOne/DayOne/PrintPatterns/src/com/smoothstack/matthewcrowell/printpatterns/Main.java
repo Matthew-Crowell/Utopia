@@ -1,138 +1,113 @@
 package com.smoothstack.matthewcrowell.printpatterns;
-/*
 
-Application to print specified patterns.
-@author matthew.crowell
-
-*/
-
+/**
+ * Class to print specified patterns.
+ *
+ * @author matthew.crowell
+ */
 public class Main {
 
-    public static void main(String[] args) {
-        System.out.println("1)");
-        PrintPattern1(4);
-        System.out.println();
-        System.out.println("2)");
-        PrintPattern2(4);
-        System.out.println();
-        System.out.println("3)");
-        PrintPattern3(4);
-        System.out.println();
-        System.out.println("4)");
-        PrintPattern4(4);
-    }
+	public static void main(String[] args) {
+		System.out.println("1)");
+		PrintPattern1(4);
+		System.out.println();
+		System.out.println("2)");
+		PrintPattern2(4);
+		System.out.println();
+		System.out.println("3)");
+		PrintPattern3(4);
+		System.out.println();
+		System.out.println("4)");
+		PrintPattern4(4);
+	}
 
-    public static void PrintPattern1(int iterations){
-        // variables for base and pattern
-        String base = ".";
-        String pattern = "*";
+	/**
+	 * Print a triangle.
+	 *
+	 * @param iterations Integer, number of rows
+	 */
+	public static void PrintPattern1(Integer iterations) {
+		StringBuilder base = new StringBuilder(".");
+		StringBuilder pattern = new StringBuilder("*");
 
-        // print by row
-        for(int i = 0; i < iterations; i++)
-        {
-            // generate base line
-            base += "..";
+		for (int i = 0; i < iterations; i++) {
+			base.append("..");
 
-            // print complete row
-            System.out.println(pattern);
+			System.out.println(pattern);
 
-            // increment number of pattern characters printed by one
-            pattern += "*";
-        }
+			pattern.append("*");
+		}
 
-        // print base line
-        System.out.println(base);
-    }
+		System.out.println(base);
+	}
 
-    public static void PrintPattern2(int iterations) {
-        // variables for base and pattern
-        String base = "..";
-        String pattern = "*";
+	/**
+	 * Print inverted triangle by column.
+	 *
+	 * @param iterations Integer, number of rows
+	 */
+	public static void PrintPattern2(Integer iterations) {
+		StringBuilder pattern = new StringBuilder("*");
 
-        // generate base line
-        for(int i = 0; i < iterations; i++){
-            base += "..";
-        }
+		System.out.println(".." + "..".repeat(iterations));
 
-        // print base line
-        System.out.println(base);
+		for (int i = iterations; i >= 0; i--) {
+			for (int j = 0; j < i; j++) {
+				System.out.print(pattern);
+			}
 
-        // print by row
-        for(int i = iterations; i >= 0; i--){
-            // print row by column
-            for(int j = 0; j < i; j++){
-                System.out.print(pattern);
-            }
+			System.out.println();
+		}
+	}
 
-            // complete row
-            System.out.println();
-        }
-    }
+	/**
+	 * Print a pyramid.
+	 *
+	 * @param iterations Integer, number of rows
+	 */
+	public static void PrintPattern3(Integer iterations) {
+		StringBuilder base = new StringBuilder("...");
+		StringBuilder pattern = new StringBuilder("*");
 
-    public static void PrintPattern3(int iterations){
-        // variables for base and pattern
-        String base = "...";
-        String pattern = "*";
+		for (int i = iterations; i > 0; i--) {
+			for (int j = i; j >= 0; j--) {
+				System.out.print(" ");
+			}
 
-        // print by row
-        for(int i = iterations; i > 0; i--){
+			System.out.println(pattern);
 
-            // spacing by column
-            for(int j = i; j >= 0; j--){
-                System.out.print(" ");
-            }
+			pattern.append("**");
+			base.append("..");
+		}
 
-            // print pattern by row
-            System.out.println(pattern);
+		System.out.println(base);
+	}
 
-            // increment number of pattern characters printed by two
-            pattern += "**";
+	/**
+	 * Print inverted pyramid.
+	 *
+	 * @param iterations Integer, number of rows
+	 */
+	public static void PrintPattern4(Integer iterations) {
+		StringBuilder pattern = new StringBuilder("*");
 
-            // generate base line
-            base += "..";
-        }
+		int patternCounter = 2 * iterations - 1;
 
-        // print base line
-        System.out.println(base);
-    }
+		System.out.println("...." + "..".repeat(iterations));
 
-    public static void PrintPattern4(int iterations) {
-        // variables for base and pattern
-        String base = "....";
-        String pattern = "*";
+		for (int i = iterations - 1; i >= 0; i--) {
+			System.out.print(" ");
 
-        // counter for number of stars
-        int patternCounter = 2 * iterations - 1;
+			for (int j = i; j < iterations; j++) {
+				System.out.print(" ");
+			}
 
-        // generate the base line
-        for(int i = 0; i < iterations; i++){
-            base += "..";
-        }
+			for (int j = 1; j <= patternCounter; j++) {
+				System.out.print(pattern);
+			}
+			System.out.println();
 
-        // print the base line
-        System.out.println(base);
-
-        // print by row
-        for (int i = iterations - 1; i >= 0; i--) {
-
-            // print leading space
-            System.out.print(" ");
-
-            // print spacing
-            for (int j = i; j < iterations; j++) {
-                System.out.print(" ");
-            }
-
-            // print pattern
-            for (int j = 1; j <= patternCounter; j++) {
-                    System.out.print(pattern);
-                }
-
-            // end the row
-            System.out.println();
-
-            // decrement number of characters printed by 2
-            patternCounter -= 2;
-        }
-    }
+			patternCounter -= 2;
+		}
+	}
 }

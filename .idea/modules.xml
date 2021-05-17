@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayThree/AppendToFile/AppendToFile.iml" filepath="$PROJECT_DIR$/WeekOne/DayThree/AppendToFile/AppendToFile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayFive/BasicLambdas/BasicLambdas.iml" filepath="$PROJECT_DIR$/WeekOne/DayFive/BasicLambdas/BasicLambdas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayFive/CommaSeparatedString/CommaSeparatedString.iml" filepath="$PROJECT_DIR$/WeekOne/DayFive/CommaSeparatedString/CommaSeparatedString.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/Final/CorrectedSingleton/CorrectedSingleton.iml" filepath="$PROJECT_DIR$/WeekOne/Final/CorrectedSingleton/CorrectedSingleton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayThree/CountSpecificCharacter/CountSpecificCharacter.iml" filepath="$PROJECT_DIR$/WeekOne/DayThree/CountSpecificCharacter/CountSpecificCharacter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayFive/DateTimeAPI/DateTimeAPI.iml" filepath="$PROJECT_DIR$/WeekOne/DayFive/DateTimeAPI/DateTimeAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayFour/Deadlock/Deadlock.iml" filepath="$PROJECT_DIR$/WeekOne/DayFour/Deadlock/Deadlock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayThree/DirectoryContents/DirectoryContents.iml" filepath="$PROJECT_DIR$/WeekOne/DayThree/DirectoryContents/DirectoryContents.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayFour/DoubleCheckedSingleton/DoubleCheckedSingleton.iml" filepath="$PROJECT_DIR$/WeekOne/DayFour/DoubleCheckedSingleton/DoubleCheckedSingleton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/Final/Functional/Functional.iml" filepath="$PROJECT_DIR$/WeekOne/Final/Functional/Functional.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/Final/Lambdas/Lambdas.iml" filepath="$PROJECT_DIR$/WeekOne/Final/Lambdas/Lambdas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayFour/LineTest/LineTest.iml" filepath="$PROJECT_DIR$/WeekOne/DayFour/LineTest/LineTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayFive/ListOfStrings/ListOfStrings.iml" filepath="$PROJECT_DIR$/WeekOne/DayFive/ListOfStrings/ListOfStrings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayOne/NumberGuessingGame/NumberGuessingGame.iml" filepath="$PROJECT_DIR$/WeekOne/DayOne/NumberGuessingGame/NumberGuessingGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayOne/PrintPatterns/PrintPatterns.iml" filepath="$PROJECT_DIR$/WeekOne/DayOne/PrintPatterns/PrintPatterns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayFour/ProducerConsumer/ProducerConsumer.iml" filepath="$PROJECT_DIR$/WeekOne/DayFour/ProducerConsumer/ProducerConsumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/Final/Recursion/Recursion.iml" filepath="$PROJECT_DIR$/WeekOne/Final/Recursion/Recursion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayTwo/ShapesInterface/ShapesInterface.iml" filepath="$PROJECT_DIR$/WeekOne/DayTwo/ShapesInterface/ShapesInterface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayTwo/SumFromTerminal/SumFromTerminal.iml" filepath="$PROJECT_DIR$/WeekOne/DayTwo/SumFromTerminal/SumFromTerminal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/DayTwo/TwoDimensionalArray/TwoDimensionalArray.iml" filepath="$PROJECT_DIR$/WeekOne/DayTwo/TwoDimensionalArray/TwoDimensionalArray.iml" />
+    </modules>
+  </component>
+</project>

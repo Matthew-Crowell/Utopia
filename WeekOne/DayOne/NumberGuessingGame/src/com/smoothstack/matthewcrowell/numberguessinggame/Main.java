@@ -11,13 +11,11 @@ public class Main {
 		Integer guess = Integer.valueOf(args[0]);
 
 		Boolean isWinner = false;
-		while(attempts > 0 && isWinner == false)
-		{
-			if(Math.abs(number - guess) < 11){
+		while (attempts > 0 && !isWinner) {
+			if (Math.abs(number - guess) < 11) {
 				System.out.println(number);
 				isWinner = true;
-			}
-			else{
+			} else {
 				System.out.print("Please guess again: ");
 				guess = input.nextInt();
 				attempts--;
