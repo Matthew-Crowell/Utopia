@@ -4,30 +4,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Class to create a list of strings matching specific criteria.
+ *
+ * @author matthew.crowell
+ */
 public class ListOfStrings {
 
-	public static void main(String[] args) {
-		ListOfStrings app = new ListOfStrings();
-		System.out.println("List of strings having a length of three and beginning with 'a':");
-		System.out.println(app.listStrings("All", "these", "are", "okay", "and", "some", "even", "match."));
-		System.out.println();
-
-		List<String> strings = new ArrayList<>();
-		strings.add("All");
-		strings.add("these");
-		strings.add("are");
-		strings.add("okay");
-		strings.add("and");
-		strings.add("some");
-		strings.add("even");
-		strings.add("match");
-
-		System.out.println("With argument of List<String>: List of strings having a length of three and beginning with 'a':");
-		System.out.println(app.listStrings(strings));
-		System.out.println();
-
-	}
-
+	/**
+	 * Create a list of strings that begin with 'a' and are exactly 3 characters in length from an
+	 * existing String[].
+	 *
+	 * @param strings List<String> of strings to be sorted
+	 * @return List<String> of Strings that match criteria
+	 */
 	public List<String> listStrings(String... strings) {
 		List<String> matchingStrings = new ArrayList<>();
 		Arrays.stream(strings).forEach((string) -> {
@@ -38,6 +28,13 @@ public class ListOfStrings {
 		return matchingStrings;
 	}
 
+	/**
+	 * Create a list of strings that begin with 'a' and are exactly 3 characters in length from an
+	 * existing list of Strings.
+	 *
+	 * @param strings List<String> of strings to be sorted
+	 * @return List<String> of Strings that match criteria
+	 */
 	public List<String> listStrings(List<String> strings) {
 		List<String> matchingStrings = new ArrayList<>();
 		strings.forEach((string) -> {

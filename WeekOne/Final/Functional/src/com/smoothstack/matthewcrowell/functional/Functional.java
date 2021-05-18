@@ -5,6 +5,8 @@ import java.util.List;
 /**
  * Class to demonstrate solutions for assignments 2, 3, and 4
  * from the final assignment for week one.
+ *
+ * @author matthew.crowell
  */
 public class Functional {
 

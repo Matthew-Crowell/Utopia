@@ -3,6 +3,8 @@ package com.smoothstack.matthewcrowell.lambdas;
 /**
  * Functional interface for creating function objects as
  * specified in instruction packet.
+ *
+ * @author matthew.crowell
  */
 interface PerformOperation {
 	String operation(Integer number);

@@ -4,14 +4,10 @@ package com.smoothstack.matthewcrowell.appendtofile;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-
-/* imports for appendToFileWithNIO */
-import java.nio.file.Paths;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
-
-/* imports required for both appendToFile methods */
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 /**
  * Class to append text to an existing file

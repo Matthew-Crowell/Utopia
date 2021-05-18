@@ -29,7 +29,22 @@ public class CountSpecificCharacter {
 	}
 
 	/**
+	 * Handles command line arguments and displays number of times character occurs.
+	 *
+	 * @param args String[] where first argument is the file to analyze
+	 */
+	public static void main(String[] args) {
+		CountSpecificCharacter app = new CountSpecificCharacter();
+		app.handleArguments(args);
+
+		if (app.getTriggerSequence() != null) {
+			System.out.println(app.countOccurrences());
+		}
+	}
+
+	/**
 	 * Getter for occurrence counter.
+	 *
 	 * @return Integer, value of occurrence counter
 	 */
 	public Integer getOccurrences() {
@@ -38,6 +53,7 @@ public class CountSpecificCharacter {
 
 	/**
 	 * Setter for occurrence counter.
+	 *
 	 * @param occurrences Integer, number of occurrences
 	 */
 	public void setOccurrences(Integer occurrences) {
@@ -46,6 +62,7 @@ public class CountSpecificCharacter {
 
 	/**
 	 * Getter for trigger sequence.
+	 *
 	 * @return String, value of trigger sequence
 	 */
 	public String getTriggerSequence() {
@@ -54,6 +71,7 @@ public class CountSpecificCharacter {
 
 	/**
 	 * Setter for trigger sequence.
+	 *
 	 * @param triggerSequence String, value of trigger sequence
 	 */
 	public void setTriggerSequence(String triggerSequence) {
@@ -62,6 +80,7 @@ public class CountSpecificCharacter {
 
 	/**
 	 * Getter for case sensitive flag.
+	 *
 	 * @return Boolean, flag set or not
 	 */
 	public Boolean getCaseSensitive() {
@@ -79,6 +98,7 @@ public class CountSpecificCharacter {
 
 	/**
 	 * Getter for filename.
+	 *
 	 * @return String, name of file to search
 	 */
 	public String getFilename() {
@@ -87,6 +107,7 @@ public class CountSpecificCharacter {
 
 	/**
 	 * Setter for filename.
+	 *
 	 * @param filename String, name of file to search
 	 */
 	public void setFilename(String filename) {
@@ -94,46 +115,32 @@ public class CountSpecificCharacter {
 	}
 
 	/**
-	 * Handles command line arguments and displays number of times character occurs.
-	 *
-	 * @param args String[] where first argument is the file to analyze
-	 */
-	public static void main(String[] args) {
-		CountSpecificCharacter app = new CountSpecificCharacter();
-		app.handleArguments(args);
-
-		if (app.getTriggerSequence() != null) {
-			System.out.println(app.countOccurrences());
-		}
-	}
-
-	/**
 	 * Evaluates command line arguments.
 	 *
 	 * @param args String[] of command line arguments
 	 */
-	private void handleArguments(String[] args){
-		if(args.length > 0){
-			for(int i = 0; i < args.length; i++){
+	private void handleArguments(String[] args) {
+		if (args.length > 0) {
+			for (int i = 0; i < args.length; i++) {
 				switch (args[i]) {
 					case ("--case-sensitive"):
 					case ("-c"):
-						caseSensitive=Boolean.valueOf(args[i+1]);
+						caseSensitive = Boolean.valueOf(args[i + 1]);
 						i++;
 						break;
 					case ("--file"):
 					case ("-f"):
-						filename = args[i+1];
+						filename = args[i + 1];
 						i++;
 						break;
 					case ("--help"):
 					case ("-h"):
 						printHelp();
-						i=args.length;
+						i = args.length;
 						break;
 					case ("--string"):
 					case ("-s"):
-						triggerSequence = args[i+1];
+						triggerSequence = args[i + 1];
 						i++;
 						break;
 					default:
@@ -151,8 +158,8 @@ public class CountSpecificCharacter {
 	 */
 	private Integer countOccurrences() {
 		try {
-			if(filename != null){
-				if(caseSensitive == true){
+			if (filename != null) {
+				if (caseSensitive == true) {
 					SearchFileCaseSensitive();
 				} else {
 					searchFile();
@@ -175,13 +182,14 @@ public class CountSpecificCharacter {
 
 	/**
 	 * Search for the number of times a string sequence occurs in a file (not case sensitive).
+	 *
 	 * @throws FileNotFoundException if no file is found
 	 */
 	private void searchFile() throws FileNotFoundException {
 		Scanner scanner = new Scanner(new BufferedReader(new FileReader(filename)));
 		StringBuilder line = new StringBuilder();
 		setTriggerSequence(triggerSequence.toUpperCase(Locale.ROOT));
-		while(scanner.hasNextLine()){
+		while (scanner.hasNextLine()) {
 			line.replace(0, line.length(), scanner.nextLine().toUpperCase(Locale.ROOT));
 			int index = line.toString().indexOf(triggerSequence);
 			while (index != -1) {
@@ -194,13 +202,14 @@ public class CountSpecificCharacter {
 
 	/**
 	 * Case sensitive search for the number of times a string sequence occurs in a file.
+	 *
 	 * @throws FileNotFoundException if no file is found
 	 */
 	private void SearchFileCaseSensitive() throws FileNotFoundException {
 		Scanner scanner = new Scanner(new BufferedReader(new FileReader(filename)));
 		StringBuilder line = new StringBuilder();
 		setTriggerSequence(triggerSequence);
-		while(scanner.hasNextLine()){
+		while (scanner.hasNextLine()) {
 			line.replace(0, line.length(), scanner.nextLine());
 			int index = line.toString().indexOf(triggerSequence);
 			while (index != -1) {
@@ -215,7 +224,7 @@ public class CountSpecificCharacter {
 	 * Print command line help to terminal on standard output.
 	 */
 	private void printHelp() {
-		System.out.println("Class to count the number of times a character appears in a given file.");
+		System.out.println("Class to count the number of times a character sequence appears in a given file.");
 		System.out.println("Usage:");
 		System.out.println("\tjava com.smoothstack.matthewcrowell.countspecificcharacter.CountSpecificCharacter " +
 				"<sequence of characters to seek>");

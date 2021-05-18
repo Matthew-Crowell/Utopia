@@ -6,6 +6,8 @@ import java.util.List;
  * Class to recursively determine if a subgroup of an
  * array can be assembled with a sum equal to a
  * specified target number.
+ *
+ * @author matthew.crowell
  */
 public class Recursion {
 
