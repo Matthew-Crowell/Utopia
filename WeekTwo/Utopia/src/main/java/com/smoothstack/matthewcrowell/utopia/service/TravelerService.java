@@ -1,12 +1,14 @@
 package com.smoothstack.matthewcrowell.utopia.service;
 
 import com.smoothstack.matthewcrowell.utopia.UtopiaApp;
+import com.smoothstack.matthewcrowell.utopia.dao.BookingDAO;
 import com.smoothstack.matthewcrowell.utopia.dao.FlightDAO;
 import com.smoothstack.matthewcrowell.utopia.entity.Booking;
 import com.smoothstack.matthewcrowell.utopia.entity.Flight;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,11 +20,15 @@ public class TravelerService {
 		Boolean completedSuccessfully = Boolean.FALSE;
 		Scanner scanner = new Scanner(System.in);
 		Connection conn = null;
+		List<Flight> tempFlights = new ArrayList<>();
 		Integer option = 0;
 		Booking booking = new Booking();
 		booking.setIsActive(1);
-		booking.setUserId(app.getUser());
+		booking.setUser(app.getUser());
 		booking.setRefunded(0);
+		booking.setStripeId("randomizedStringGoesHere");
+		booking.setFlights(tempFlights);
+
 		try {
 			conn = app.getConnUtil().getConnection();
 			FlightDAO fdao = new FlightDAO(conn);
@@ -44,6 +50,7 @@ public class TravelerService {
 				option = scanner.nextInt();
 				if (!option.equals(exit)) {
 					Flight flight = flights.get(option - 1);
+					booking.setConfirmationCode(booking.getUser().getUsername() + flight.getId());
 					System.out.println("Seat selection:");
 					System.out.println("1) View Flight Details");
 					System.out.println("2) First Class");
@@ -55,6 +62,10 @@ public class TravelerService {
 					if (!option.equals(5)) {
 						flight.setReservedSeats(flight.getReservedSeats() + 1);
 						completedSuccessfully = fdao.updateFlight(flight);
+						booking.getFlights().add(flight);
+
+						BookingDAO bdao = new BookingDAO(conn);
+						completedSuccessfully = bdao.addBooking(booking);
 					}
 				}
 				counter = 1;

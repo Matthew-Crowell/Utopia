@@ -3,29 +3,32 @@ package com.smoothstack.matthewcrowell.utopia.entity;
 import java.util.List;
 
 public class Booking {
-
+	// booking
 	private Integer bookingNumber;
 	private Integer isActive;
 	private String confirmationCode;
-	private User userId;
-	private String swipeId;
+	// booking_user
+	private User user;
+	// booking_payment
+	private String stripeId;
 	private Integer refunded;
+	// flight_bookings
 	private List<Flight> flights;
 
-	public User getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(User userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public String getSwipeId() {
-		return swipeId;
+	public String getStripeId() {
+		return stripeId;
 	}
 
-	public void setSwipeId(String swipeId) {
-		this.swipeId = swipeId;
+	public void setStripeId(String swipeId) {
+		this.stripeId = swipeId;
 	}
 
 	public Integer getRefunded() {

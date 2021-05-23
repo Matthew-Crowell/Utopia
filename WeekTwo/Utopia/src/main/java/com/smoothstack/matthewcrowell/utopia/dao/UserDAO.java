@@ -30,8 +30,8 @@ public class UserDAO extends BaseDAO<User>{
 	public User findUser(User user){
 		List<User> users = new ArrayList<>();
 		try{
-			users = read("SELECT * FROM users WHERE username = ?",
-					new Object[] { user.getUsername() });
+			users = read("SELECT * FROM users WHERE username = ? OR id = ?",
+					new Object[] { user.getUsername(), user.getUserId() });
 		} catch(ClassNotFoundException | SQLException e){
 			e.printStackTrace();
 		}

@@ -42,6 +42,7 @@ public class AirportDAO extends BaseDAO<Airport> {
 			airport.setCityName(rs.getString("city"));
 			airports.add(airport);
 		}
+
 		return airports;
 	}
 
