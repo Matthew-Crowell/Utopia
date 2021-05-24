@@ -64,4 +64,11 @@ public class Flight {
 	public void setPricePerSeat(Double pricePerSeat) {
 		this.pricePerSeat = pricePerSeat;
 	}
+
+	@Override
+	public String toString() {
+		return "From " + route.getOrigin().getAirportCode() + ", " + route.getOrigin().getCityName() +
+				" to " + route.getDestination().getAirportCode() + ", " + route.getDestination().getCityName()
+				+ ", departing on " + departureDateTime + ".";
+	}
 }

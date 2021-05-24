@@ -19,6 +19,14 @@ public class ConnectionUtil {
 		return conn;
 	}
 
+	public Connection getConnection(String connector) throws ClassNotFoundException, SQLException {
+		Class.forName(getProperty(connector + "driver"));
+		Connection conn = DriverManager.getConnection(getProperty(connector + "url"), getProperty(connector +"dbuser"),
+				getProperty(connector +"dbpword"));
+		conn.setAutoCommit(Boolean.FALSE);
+		return conn;
+	}
+
 	public String getProperty(String propertyName) {
 		try (InputStream input = new FileInputStream("resources/application.properties")) {
 			Properties prop = new Properties();

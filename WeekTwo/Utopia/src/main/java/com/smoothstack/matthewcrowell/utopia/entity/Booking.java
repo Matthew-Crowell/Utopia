@@ -7,20 +7,29 @@ public class Booking {
 	private Integer bookingNumber;
 	private Integer isActive;
 	private String confirmationCode;
-	// booking_user
-	private User user;
+	// booking_user, booking_agent, or booking_guest
+	private User bookedBy;
+	private User passenger;
 	// booking_payment
 	private String stripeId;
 	private Integer refunded;
 	// flight_bookings
 	private List<Flight> flights;
 
-	public User getUser() {
-		return user;
+	public User getBookedBy() {
+		return bookedBy;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setBookedBy(User bookedBy) {
+		this.bookedBy = bookedBy;
+	}
+
+	public User getPassenger() {
+		return passenger;
+	}
+
+	public void setPassenger(User passenger) {
+		this.passenger = passenger;
 	}
 
 	public String getStripeId() {
@@ -36,7 +45,7 @@ public class Booking {
 	}
 
 	public void setRefunded(Integer refunded) {
-		if(refunded >= 0 && refunded <= 1) {
+		if (refunded >= 0 && refunded <= 1) {
 			this.refunded = refunded;
 		}
 	}
@@ -73,5 +82,17 @@ public class Booking {
 		this.confirmationCode = confirmationCode;
 	}
 
-
+	@Override
+	public String toString() {
+		return "Booking{" +
+				"bookingNumber=" + bookingNumber +
+				", isActive=" + isActive +
+				", confirmationCode='" + confirmationCode + '\'' +
+				", bookedBy=" + bookedBy +
+				", passenger=" + passenger +
+				", stripeId='" + stripeId + '\'' +
+				", refunded=" + refunded +
+				", flights=" + flights +
+				'}';
+	}
 }

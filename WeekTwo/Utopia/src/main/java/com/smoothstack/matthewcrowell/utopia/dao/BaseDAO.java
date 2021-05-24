@@ -11,13 +11,14 @@ public abstract class BaseDAO<T> {
 	public static Connection conn = null;
 
 	public BaseDAO(Connection conn) {
-		this.conn = conn;
+		BaseDAO.conn = conn;
 	}
+
 	public void save(String sql, Object[] vals) throws ClassNotFoundException, SQLException {
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		if(vals!=null) {
+		if (vals != null) {
 			int count = 1;
-			for(Object o: vals) {
+			for (Object o : vals) {
 				pstmt.setObject(count, o);
 				count++;
 			}
@@ -27,9 +28,9 @@ public abstract class BaseDAO<T> {
 
 	public List<T> read(String sql, Object[] vals) throws ClassNotFoundException, SQLException {
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		if(vals!=null) {
+		if (vals != null) {
 			int count = 1;
-			for(Object o: vals) {
+			for (Object o : vals) {
 				pstmt.setObject(count, o);
 				count++;
 			}

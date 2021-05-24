@@ -1,22 +1,28 @@
 package com.smoothstack.matthewcrowell.utopia;
 
-import com.smoothstack.matthewcrowell.utopia.dao.FlightDAO;
 import com.smoothstack.matthewcrowell.utopia.entity.Flight;
+import com.smoothstack.matthewcrowell.utopia.entity.Route;
 import com.smoothstack.matthewcrowell.utopia.entity.User;
 import com.smoothstack.matthewcrowell.utopia.service.ConnectionUtil;
+import com.smoothstack.matthewcrowell.utopia.service.EmployeeService;
 import com.smoothstack.matthewcrowell.utopia.service.TravelerService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class UtopiaApp {
 	private final ConnectionUtil connUtil = new ConnectionUtil();
 	private User user;
+
+	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+		UtopiaApp app = new UtopiaApp();
+		Scanner scanner = new Scanner(System.in);
+		app.login(scanner);
+	}
 
 	public ConnectionUtil getConnUtil() {
 		return connUtil;
@@ -29,29 +35,6 @@ public class UtopiaApp {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	public static void main(String[] args) throws SQLException, ClassNotFoundException {
-		UtopiaApp app = new UtopiaApp();
-		Scanner scanner = new Scanner(System.in);
-
-//		StringBuilder input = new StringBuilder();
-//		System.out.println("New flight:");
-//		FlightDAO fdao = new FlightDAO(app.connUtil.getConnection());
-//
-//		System.out.print("Flight ID: ");
-//		input.append(scanner.nextLine());
-//		Flight targetFlight = null;
-//		List<Flight> flights = new ArrayList<>();
-//		flights = fdao.getFlights();
-//		for (Flight flight : flights) {
-//			if (input.toString().equals(flight.getId().toString())) {
-//				targetFlight = flight;
-//			}
-//		}
-//		fdao.removeFlight(targetFlight);
-		app.login(scanner);
-	}
-
 
 	private void login(Scanner scanner) throws SQLException, ClassNotFoundException {
 		System.out.println("Welcome to Utopia Airlines.");
@@ -97,8 +80,9 @@ public class UtopiaApp {
 
 	private void displayTravelerMenu(Scanner scanner) {
 		Integer option = 0;
+		System.out.println("Welcome, Traveler!\n");
 		while (!option.equals(3)) {
-			System.out.println("Welcome, Traveler!");
+			System.out.println("Main Menu");
 			System.out.println("1) Book a Ticket");
 			System.out.println("2) Cancel an Upcoming Trip");
 			System.out.println("3) Logout");
@@ -107,11 +91,9 @@ public class UtopiaApp {
 
 			switch (option) {
 				case (1):
-					try {
-						travelerBookTicket(this, scanner);
-					} catch (SQLException | ClassNotFoundException throwables) {
-						throwables.printStackTrace();
-					}
+
+					travelerBookTicket(this, scanner);
+
 					break;
 				case (2):
 					travelerCancelTicket(scanner);
@@ -126,24 +108,23 @@ public class UtopiaApp {
 	}
 
 	private void travelerCancelTicket(Scanner scanner) {
-		Integer option = 0;
-		while (!option.equals(3)) {
-			System.out.println("Your upcoming trips:");
-			System.out.println("1) <flights listed here>");
-			System.out.println("3) Quit to Previous");
-			System.out.print("Selection: ");
-			option = scanner.nextInt();
-
-			if (option.equals(1)) {
-				// TODO: Cancel trip
-			}
+		TravelerService travelerService = new TravelerService();
+		try {
+			travelerService.cancelBooking(this);
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
 		}
 
 	}
 
-	private void travelerBookTicket(UtopiaApp app, Scanner scanner) throws SQLException, ClassNotFoundException {
-		TravelerService travelerService = new TravelerService();
-		travelerService.addBooking(app);
+	private void travelerBookTicket(UtopiaApp app, Scanner scanner) {
+		try {
+			TravelerService travelerService = new TravelerService();
+			travelerService.addBooking(app);
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+
 
 	}
 
@@ -164,19 +145,25 @@ public class UtopiaApp {
 
 	private void displayEmployeeFlights(Scanner scanner) {
 		Integer option = 0;
-		while (!option.equals(3)) {
-			System.out.println("Flights:");
-			System.out.println("1) <list of flights displayed here>");
-			System.out.println("3) Quit to Previous");
-			option = scanner.nextInt();
-			if (option.equals(1)) {
-				employeeFlightOptions(scanner);
-			}
+		Integer counter = 1;
+
+		System.out.println("Flights:");
+
+		EmployeeService employeeService = new EmployeeService();
+		List<Flight> flights = employeeService.displayflights(this);
+		for (Flight flight : flights) {
+			System.out.println(counter + ") " + flight);
+			counter++;
 		}
 
+		System.out.println(counter + ") Quit to Previous");
+		option = scanner.nextInt();
+		if (!option.equals(counter)) {
+			employeeFlightOptions(flights.get(option - 1), scanner);
+		}
 	}
 
-	private void employeeFlightOptions(Scanner scanner) {
+	private void employeeFlightOptions(Flight flight, Scanner scanner) {
 		System.out.println("Options:");
 		System.out.println("1) View Flight Details");
 		System.out.println("2) Update Flight Details");
@@ -185,60 +172,60 @@ public class UtopiaApp {
 		System.out.print("Selection: ");
 		Integer option = scanner.nextInt();
 		if (option.equals(1)) {
-			// TODO: add flight to method parameters
-			employeeViewFlightDetails(scanner);
+			System.out.println(flight);
+			System.out.println("\tReserved Seats: " + flight.getReservedSeats());
 		} else if (option.equals(2)) {
-			// TODO: add flight to method parameters
-			updateFlightDetails(scanner);
+			updateFlightDetails(flight, scanner);
 		} else if (option.equals(3)) {
-			// TODO: add flight to method parameters
-			addSeatsToFlight(scanner);
+			addSeatsToFlight(flight, scanner);
 		}
 	}
 
-	private void addSeatsToFlight(Scanner scanner) {
+	private void addSeatsToFlight(Flight flight, Scanner scanner) {
 		Integer option = 0;
-		while (!option.equals(4)) {
-			System.out.println("Add Seat To:");
-			System.out.println("1) First Class");
-			System.out.println("2) Business Class");
-			System.out.println("3) Economy class");
-			System.out.println("4) Quit to Cancel Operation");
-			System.out.print("Selection: ");
+			System.out.print("Enter new Maximum Capacity: ");
 			option = scanner.nextInt();
-			if (option.equals(1)) {
-				// add seat to first class
-			} else if (option.equals(2)) {
-				// add seat to business class
-			} else if (option.equals(3)) {
-				// add seat to economy class
+
+			EmployeeService employeeService = new EmployeeService();
+			try {
+				employeeService.updateFlight(this, flight);
+			} catch (SQLException throwables) {
+				throwables.printStackTrace();
 			}
-		}
 	}
 
-	private void updateFlightDetails(Scanner scanner) {
+	private void updateFlightDetails(Flight flight, Scanner scanner) {
 		scanner.nextLine();
 		StringBuilder option = new StringBuilder();
-		System.out.print("Please enter new Origin Airport: ");
+		System.out.print("Please enter new Route: ");
 		option.setLength(0);
 		option.append(scanner.nextLine());
-		// business logic
-		System.out.print("Please enter new Departure Date: ");
+		if(option.length() > 0){
+			Route route = new Route();
+			route.setId(Integer.parseInt(option.toString()));
+			flight.setRoute(route);
+		}
+
+		System.out.print("Please enter new Airplane ID: ");
 		option.setLength(0);
 		option.append(scanner.nextLine());
-		// business logic
-		System.out.print("Please enter new Departure Time: ");
+		if(option.length() > 0){
+			flight.setAirplaneId(Integer.parseInt(option.toString()));
+		}
+
+		System.out.print("Please enter new Departure Date and Time: ");
 		option.setLength(0);
 		option.append(scanner.nextLine());
-		// business logic
-		System.out.print("Please enter new Arrival Date: ");
-		option.setLength(0);
-		option.append(scanner.nextLine());
-		// business logic
-		System.out.print("please enter new Arrival Time: ");
-		option.setLength(0);
-		option.append(scanner.nextLine());
-		// business logic
+		if(option.length() > 0){
+			flight.setDepartureDateTime(option.toString());
+		}
+		try {
+			Connection conn = connUtil.getConnection();
+			EmployeeService employeeService = new EmployeeService();
+			employeeService.updateFlight(this, flight);
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void employeeViewFlightDetails(Scanner scanner) {
