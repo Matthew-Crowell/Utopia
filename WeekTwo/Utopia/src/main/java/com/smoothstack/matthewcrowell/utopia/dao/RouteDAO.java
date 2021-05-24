@@ -28,7 +28,7 @@ public class RouteDAO extends BaseDAO<Route> {
 	 * @throws SQLException
 	 */
 	public void addRoute(Route route) throws ClassNotFoundException, SQLException {
-		save("INSERT into route (origin_id, destination_id) values (?, ?)",
+		save("INSERT into route (`origin_id`, `destination_id`) values (?, ?)",
 				new Object[]{route.getOrigin().getAirportCode(), route.getDestination().getAirportCode()});
 	}
 

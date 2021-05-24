@@ -75,7 +75,7 @@ public class UserDAO extends BaseDAO<User> {
 		Boolean completedSuccessfully = Boolean.FALSE;
 		if (user.getNewPassword() != null) {
 			save("UPDATE user SET role_id = ?, given_name = ?, family_name = ?, username = ?, " +
-					"email = ?, phone = ?, password = ? WHERE id = ? or username = ?",
+							"email = ?, phone = ?, password = ? WHERE id = ? or username = ?",
 					new Object[]{user.getRole(), user.getGivenName(), user.getFamilyName(),
 							user.getUsername(), user.getEmail(), user.getPhoneNumber(),
 							user.getNewPassword(), user.getUserId(), user.getUsername()});

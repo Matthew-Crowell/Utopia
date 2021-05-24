@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ *
+ */
 public class TravelerService {
 
 	public Boolean addBooking(UtopiaApp app) throws SQLException {
@@ -60,7 +63,7 @@ public class TravelerService {
 				System.out.println("5) Quit to Previous");
 				System.out.print("Selection: ");
 				option = scanner.nextInt();
-				if(option.equals(1)){
+				if (option.equals(1)) {
 					System.out.println(flight.toString());
 				} else if (!option.equals(5)) {
 					flight.setReservedSeats(flight.getReservedSeats() + 1);
@@ -81,6 +84,11 @@ public class TravelerService {
 		return completedSuccessfully;
 	}
 
+	/**
+	 * @param app
+	 * @return
+	 * @throws SQLException
+	 */
 	public Boolean cancelBooking(UtopiaApp app) throws SQLException {
 		Boolean completedSuccessfully = Boolean.FALSE;
 		Scanner scanner = new Scanner(System.in);
@@ -123,7 +131,9 @@ public class TravelerService {
 			e.printStackTrace();
 			conn.rollback();
 		} finally {
-			conn.close();
+			if (conn != null) {
+				conn.close();
+			}
 		}
 		return completedSuccessfully;
 	}

@@ -84,15 +84,21 @@ public class Booking {
 
 	@Override
 	public String toString() {
+		StringBuilder str = new StringBuilder();
+		if(passenger != null){
+			str.append(passenger.getGivenName() + " " + passenger.getFamilyName());
+		} else {
+			str.append(bookedBy.getGivenName() + " " + bookedBy.getFamilyName());
+		}
 		return "Booking{" +
 				"bookingNumber=" + bookingNumber +
 				", isActive=" + isActive +
-				", confirmationCode='" + confirmationCode + '\'' +
-				", bookedBy=" + bookedBy +
-				", passenger=" + passenger +
+				", confirmationCode='" + confirmationCode + "'" +
+				", bookedBy=" + bookedBy.getGivenName() + " " + bookedBy.getFamilyName() +
+				", passenger=" + str +
 				", stripeId='" + stripeId + '\'' +
 				", refunded=" + refunded +
-				", flights=" + flights +
+				", flights=" + flights.get(0) +
 				'}';
 	}
 }

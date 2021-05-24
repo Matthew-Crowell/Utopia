@@ -86,7 +86,7 @@ public class BookingDAO extends BaseDAO<Booking> {
 	 */
 	public List<Booking> getActiveBookings() throws SQLException, ClassNotFoundException {
 		return read("SELECT * from booking where is_active = ?", new Object[]
-				{ 1 });
+				{1});
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class BookingDAO extends BaseDAO<Booking> {
 	 */
 	public List<Booking> getInactiveBookings() throws SQLException, ClassNotFoundException {
 		return read("SELECT * from booking where is_active = ?", new Object[]
-				{ 0 });
+				{0});
 	}
 
 	/**
@@ -112,6 +112,15 @@ public class BookingDAO extends BaseDAO<Booking> {
 		Boolean completedSuccessfully = Boolean.FALSE;
 		save("UPDATE booking SET is_active = ?, confirmation_code = ? WHERE id = ?;",
 				new Object[]{booking.getIsActive(), booking.getConfirmationCode(), booking.getBookingNumber()});
+		if (booking.getPassenger() != null) {
+			save("UPDATE passenger SET given_name = ?, family_name = ? WHERE booking_id = ?;",
+					new Object[]{booking.getPassenger().getGivenName(), booking.getPassenger().getFamilyName(),
+							booking.getBookingNumber()});
+		} else {
+			save("UPDATE passenger SET given_name = ?, family_name = ? WHERE booking_id = ?;",
+					new Object[]{booking.getBookedBy().getGivenName(), booking.getBookedBy().getFamilyName(),
+							booking.getBookingNumber()});
+		}
 
 		save("UPDATE booking_payment SET stripe_id = ?, refunded = ? WHERE booking_id = ?;",
 				new Object[]{booking.getStripeId(), booking.getRefunded(), booking.getBookingNumber()});

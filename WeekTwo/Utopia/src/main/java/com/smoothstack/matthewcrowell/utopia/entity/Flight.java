@@ -1,5 +1,9 @@
 package com.smoothstack.matthewcrowell.utopia.entity;
 
+
+/**
+ *
+ */
 public class Flight {
 	private Integer id;
 	private Route route;
