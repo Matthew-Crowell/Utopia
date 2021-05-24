@@ -83,9 +83,9 @@ public class RouteDAOTest extends TestCase {
 			}
 
 			routes = rdao.getRoutes();
-			for(Route r : routes){
-				if(r.getOrigin().getAirportCode().equals("BNA") &&
-				r.getDestination().getAirportCode().equals("MIA")){
+			for (Route r : routes) {
+				if (r.getOrigin().getAirportCode().equals("BNA") &&
+						r.getDestination().getAirportCode().equals("MIA")) {
 					updatedSuccessfully = Boolean.TRUE;
 				}
 			}
@@ -133,9 +133,9 @@ public class RouteDAOTest extends TestCase {
 			conn.commit();
 			routes = rdao.getRoutesByAirportCode("BNA");
 
-			for(Route r : routes){
-				if(r.getOrigin().getAirportCode().equals("BNA") &&
-				r.getDestination().getAirportCode().equals("ECP")){
+			for (Route r : routes) {
+				if (r.getOrigin().getAirportCode().equals("BNA") &&
+						r.getDestination().getAirportCode().equals("ECP")) {
 					route = r;
 					addedSuccessfully = Boolean.TRUE;
 				}
@@ -145,8 +145,8 @@ public class RouteDAOTest extends TestCase {
 			conn.commit();
 			removedSuccessfully = Boolean.TRUE;
 			routes = rdao.getRoutesByAirportCode("BNA");
-			for(Route r : routes){
-				if(r.getOrigin().getAirportCode().equals("BNA") &&
+			for (Route r : routes) {
+				if (r.getOrigin().getAirportCode().equals("BNA") &&
 						r.getDestination().getAirportCode().equals("ECP")) {
 					removedSuccessfully = Boolean.FALSE;
 				}

@@ -85,7 +85,7 @@ public class Booking {
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		if(passenger != null){
+		if (passenger != null) {
 			str.append(passenger.getGivenName() + " " + passenger.getFamilyName());
 		} else {
 			str.append(bookedBy.getGivenName() + " " + bookedBy.getFamilyName());

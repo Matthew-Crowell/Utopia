@@ -129,7 +129,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void travelerCancelTicket(Scanner scanner) {
@@ -143,7 +142,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param app
 	 * @param scanner
 	 */
@@ -159,7 +157,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void displayEmployeeMenu(Scanner scanner) {
@@ -178,7 +175,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void displayEmployeeFlights(Scanner scanner) {
@@ -203,7 +199,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param flight
 	 * @param scanner
 	 */
@@ -226,7 +221,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param flight
 	 * @param scanner
 	 */
@@ -244,7 +238,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param flight
 	 * @param scanner
 	 */
@@ -282,7 +275,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void displayAdminMenu(Scanner scanner) {
@@ -320,7 +312,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void adminEditUsers(Scanner scanner) {
@@ -342,7 +333,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void adminDeleteUser(Scanner scanner) {
@@ -378,7 +368,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void adminAddUser(Scanner scanner) {
@@ -428,7 +417,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void adminEditAirports(Scanner scanner) {
@@ -450,7 +438,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void adminDeleteAirport(Scanner scanner) {
@@ -470,7 +457,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void adminAddAirport(Scanner scanner) {
@@ -495,7 +481,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void adminEditRoutes(Scanner scanner) {
@@ -514,7 +499,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void adminDeleteRoute(Scanner scanner) {
@@ -547,7 +531,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void adminAddRoute(Scanner scanner) {
@@ -579,7 +562,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void adminEditBookings(Scanner scanner) {
@@ -605,7 +587,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param booking
 	 * @param scanner
 	 */
@@ -623,7 +604,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param booking
 	 */
 	private void adminCancelBooking(Booking booking) {
@@ -636,7 +616,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param booking
 	 * @param scanner
 	 */
@@ -701,7 +680,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param scanner
 	 */
 	private void adminEditFlights(Scanner scanner) {
@@ -770,7 +748,6 @@ public class UtopiaApp {
 	}
 
 	/**
-	 *
 	 * @param flight
 	 * @param scanner
 	 */

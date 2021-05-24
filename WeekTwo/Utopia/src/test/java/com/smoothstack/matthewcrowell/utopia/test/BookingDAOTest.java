@@ -75,8 +75,8 @@ public class BookingDAOTest extends TestCase {
 
 			bookings = bdao.getActiveBookings();
 
-			for(Booking b : bookings){
-				if(b.getBookingNumber().equals(booking.getBookingNumber())){
+			for (Booking b : bookings) {
+				if (b.getBookingNumber().equals(booking.getBookingNumber())) {
 					success = !success;
 				}
 			}
@@ -84,7 +84,7 @@ public class BookingDAOTest extends TestCase {
 
 			bdao.removeBooking(booking);
 			conn.commit();
-		} catch ( ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			conn.rollback();
 		} finally {
 			conn.close();
@@ -94,7 +94,7 @@ public class BookingDAOTest extends TestCase {
 	@Test
 	public void testGetActiveBookings() throws SQLException, ClassNotFoundException {
 		bookings = bdao.getActiveBookings();
-		if(bookings.size() >= 1){
+		if (bookings.size() >= 1) {
 			success = !success;
 		}
 		assertTrue(success);
@@ -103,7 +103,7 @@ public class BookingDAOTest extends TestCase {
 	@Test
 	public void testGetInactivebookings() throws SQLException, ClassNotFoundException {
 		bookings = bdao.getInactiveBookings();
-		if(bookings.size() >= 1){
+		if (bookings.size() >= 1) {
 			success = !success;
 		}
 		assertTrue(success);
@@ -111,31 +111,31 @@ public class BookingDAOTest extends TestCase {
 
 	@Test
 	public void testUpdateBooking() throws SQLException, ClassNotFoundException {
-			bdao.addBooking(booking);
-			conn.commit();
+		bdao.addBooking(booking);
+		conn.commit();
 
-			bookings = bdao.getActiveBookings();
+		bookings = bdao.getActiveBookings();
 
-			for(Booking b : bookings){
-				if(b.getBookingNumber().equals(booking.getBookingNumber())){
+		for (Booking b : bookings) {
+			if (b.getBookingNumber().equals(booking.getBookingNumber())) {
+				success = !success;
+			}
+		}
+		booking.setStripeId("test");
+		bdao.updateBooking(booking);
+		conn.commit();
+		bookings = bdao.getActiveBookings();
+
+		for (Booking b : bookings) {
+			if (b.getBookingNumber().equals(booking.getBookingNumber())) {
+				if (b.getIsActive() == 1) {
 					success = !success;
 				}
 			}
-			booking.setStripeId("test");
-			bdao.updateBooking(booking);
-			conn.commit();
-			bookings = bdao.getActiveBookings();
+		}
 
-			for(Booking b : bookings){
-				if(b.getBookingNumber().equals(booking.getBookingNumber())){
-					if(b.getIsActive() == 1){
-						success = !success;
-					}
-				}
-			}
-
-			bdao.removeBooking(booking);
-			conn.commit();
+		bdao.removeBooking(booking);
+		conn.commit();
 	}
 
 	@Test
@@ -152,13 +152,13 @@ public class BookingDAOTest extends TestCase {
 
 			bookings = bdao.getActiveBookings();
 
-			for(Booking b : bookings){
-				if(b.getBookingNumber().equals(bookingNumber)){
+			for (Booking b : bookings) {
+				if (b.getBookingNumber().equals(bookingNumber)) {
 					success = !success;
 				}
 			}
 			assertTrue(success);
-		} catch ( ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			conn.rollback();
 		} finally {
 			conn.close();

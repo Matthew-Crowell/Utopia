@@ -10,9 +10,9 @@ import java.util.List;
 
 public class EmployeeService {
 
-	public List<Flight> displayflights(UtopiaApp app){
+	public List<Flight> displayflights(UtopiaApp app) {
 		List<Flight> flights = null;
- 		try {
+		try {
 			Connection conn = app.getConnUtil().getConnection();
 			FlightDAO fdao = new FlightDAO(conn);
 			flights = fdao.getFlights();

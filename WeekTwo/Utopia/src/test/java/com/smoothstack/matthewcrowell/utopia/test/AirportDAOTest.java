@@ -38,8 +38,8 @@ public class AirportDAOTest extends TestCase {
 			conn.commit();
 
 			airports = adao.getAirports();
-			for(Airport ap : airports){
-				if(ap.getAirportCode().equals("DUB")){
+			for (Airport ap : airports) {
+				if (ap.getAirportCode().equals("DUB")) {
 					success = Boolean.TRUE;
 				}
 			}
@@ -63,8 +63,8 @@ public class AirportDAOTest extends TestCase {
 			adao.updateAirport(airport);
 			conn.commit();
 			airports = adao.getAirports();
-			for(Airport ap : airports){
-				if(ap.getCityName().equals("Baile Átha Cliath")){
+			for (Airport ap : airports) {
+				if (ap.getCityName().equals("Baile Átha Cliath")) {
 					success = Boolean.TRUE;
 				}
 			}
@@ -84,7 +84,7 @@ public class AirportDAOTest extends TestCase {
 		Boolean success = Boolean.FALSE;
 		try {
 			airports = adao.getAirports();
-			if(airports.size() >= 20){
+			if (airports.size() >= 20) {
 				success = Boolean.TRUE;
 			}
 			assertTrue(success);
@@ -102,8 +102,8 @@ public class AirportDAOTest extends TestCase {
 			adao.addAirport(airport);
 			conn.commit();
 			airports = adao.getAirports();
-			for(Airport ap : airports){
-				if(ap.getAirportCode().equals("DUB")){
+			for (Airport ap : airports) {
+				if (ap.getAirportCode().equals("DUB")) {
 					success = !success;
 				}
 			}
@@ -111,8 +111,8 @@ public class AirportDAOTest extends TestCase {
 			conn.commit();
 
 			airports = adao.getAirports();
-			for(Airport ap : airports){
-				if(ap.getAirportCode().equals("DUB")){
+			for (Airport ap : airports) {
+				if (ap.getAirportCode().equals("DUB")) {
 					success = !success;
 				}
 			}
