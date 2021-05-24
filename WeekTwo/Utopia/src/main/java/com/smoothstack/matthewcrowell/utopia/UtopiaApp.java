@@ -59,13 +59,16 @@ public class UtopiaApp {
 		/* Get username, password, and user role */
 		ConnectionUtil connUtil = new ConnectionUtil();
 		Connection conn = connUtil.getConnection();
+
 		String query = "SELECT * FROM user WHERE username = '" + username + "'";
 		PreparedStatement pstmt = conn.prepareStatement(query);
 		ResultSet rs = pstmt.executeQuery();
 		rs.next();
 		/* End direct database query */
 
+		Boolean loggedIn = Boolean.FALSE;
 		if (username.equals(rs.getString("username")) && password.equals(rs.getString("password"))) {
+			loggedIn = !loggedIn;
 			user = new User();
 			user.setUserId(rs.getInt("id"));
 			user.setRole(rs.getInt("role_id"));
@@ -74,20 +77,22 @@ public class UtopiaApp {
 			user.setUsername(rs.getString("username"));
 			user.setEmail(rs.getString("email"));
 			user.setPhoneNumber(rs.getString("phone"));
-		}
 
-		conn.close();
+			conn.close();
 
-		if (user.getRole().equals(1)) {
-			displayEmployeeMenu(scanner);
-		}
+			if (user.getRole().equals(1)) {
+				displayEmployeeMenu(scanner);
+			}
 
-		if (user.getRole().equals(2)) {
-			displayTravelerMenu(scanner);
-		}
+			if (user.getRole().equals(2)) {
+				displayTravelerMenu(scanner);
+			}
 
-		if (user.getRole().equals(3)) {
-			displayAdminMenu(scanner);
+			if (user.getRole().equals(3)) {
+				displayAdminMenu(scanner);
+			}
+		} else {
+			System.out.println("Unable to login.  Please try again.");
 		}
 	}
 
@@ -123,6 +128,10 @@ public class UtopiaApp {
 		}
 	}
 
+	/**
+	 *
+	 * @param scanner
+	 */
 	private void travelerCancelTicket(Scanner scanner) {
 		TravelerService travelerService = new TravelerService();
 		try {
@@ -186,6 +195,7 @@ public class UtopiaApp {
 		}
 
 		System.out.println(counter + ") Quit to Previous");
+		System.out.print("Selection: ");
 		option = scanner.nextInt();
 		if (!option.equals(counter)) {
 			employeeFlightOptions(flights.get(option - 1), scanner);
