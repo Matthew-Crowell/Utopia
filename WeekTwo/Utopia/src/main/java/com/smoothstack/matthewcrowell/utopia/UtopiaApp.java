@@ -720,14 +720,15 @@ public class UtopiaApp {
 			System.out.print("Enter Maximum Capacity: ");
 			detail.setLength(0);
 			detail.append(scanner.nextInt());
+			scanner.nextLine();
 			flight.setMaxCapacity(Integer.parseInt(detail.toString()));
 
 			System.out.print("Enter Departure Date and Time (YYYY-MM-DD HH:MM:SS): ");
 			detail.setLength(0);
-			scanner.next();
 			detail.append(scanner.nextLine());
+			System.out.println(detail);
 			flight.setDepartureDateTime(detail.toString());
-
+			System.out.println(flight.getDepartureDateTime());
 			System.out.print("Enter Number of Reserved Seats: ");
 			detail.setLength(0);
 			detail.append(scanner.nextInt());
